@@ -7,6 +7,9 @@ ADD ./etc/ /etc/
 # dando permisos al directorio de dkim
 RUN chown -R opendkim:opendkim /etc/opendkim/keys/
 
+# creando el directorio
+RUN mkdir /run/opendkim && chown -R opendkim:opendkim /run/opendkim/
+
 # Define mountable directories.
 VOLUME ["/etc/opendkim"]
 
