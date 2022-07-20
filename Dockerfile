@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:latest
 RUN apk --no-cache add bash opendkim opendkim-utils && rm -rf /var/cache/apk/*
 
 # Add configs
