@@ -1,5 +1,5 @@
 FROM alpine:latest
-RUN apk --no-cache add bash opendkim opendkim-utils && rm -rf /var/cache/apk/*
+RUN apk --no-cache add bash opendkim opendkim-utils busybox-extras && rm -rf /var/cache/apk/*
 
 # Add configs
 ADD ./etc/ /etc/
