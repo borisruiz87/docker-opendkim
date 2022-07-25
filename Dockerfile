@@ -11,10 +11,13 @@ RUN chown -R opendkim:opendkim /etc/opendkim/keys/
 RUN mkdir /run/opendkim && chown -R opendkim:opendkim /run/opendkim/
 
 # Define mountable directories.
-VOLUME ["/etc/opendkim"]
+# VOLUME ["/etc/opendkim"]
 
 # Define default command.
-CMD ["/usr/sbin/opendkim", "-f",  "-l",  "-x",  "/etc/opendkim/opendkim.conf"]
+# CMD ["/usr/sbin/opendkim", "-f",  "-l",  "-x",  "/etc/opendkim/opendkim.conf"]
+
+# Define default command.
+CMD ["/usr/sbin/opendkim", "-f"]
 
 # Expose ports.
 EXPOSE 8891
