@@ -14,10 +14,7 @@ RUN mkdir /run/opendkim && chown -R opendkim:opendkim /run/opendkim/
 # VOLUME ["/etc/opendkim"]
 
 # Define default command.
-# CMD ["/usr/sbin/opendkim", "-f",  "-l",  "-x",  "/etc/opendkim/opendkim.conf"]
-
-# Define default command.
-CMD ["/usr/sbin/opendkim", "-f"]
+ CMD ["/usr/sbin/opendkim", "-f",  "-l",  "-x",  "/etc/opendkim/opendkim.conf"]
 
 # Expose ports.
 EXPOSE 8891
