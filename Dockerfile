@@ -10,6 +10,9 @@ RUN chown -R opendkim:opendkim /etc/opendkim/keys/
 # creando el directorio
 RUN mkdir /run/opendkim && chown -R opendkim:opendkim /run/opendkim/
 
+# asignando un usuario postfix y adicionandole al grupo opendkim
+RUN adduser -H -D -s /sbin/nologin postfix && addgroup postfix opendkim
+
 # Define mountable directories.
 # VOLUME ["/etc/opendkim"]
 
