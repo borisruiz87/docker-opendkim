@@ -5,16 +5,16 @@ RUN apk --no-cache add bash opendkim opendkim-utils busybox-extras rsyslog super
 ADD ./etc/ /etc/
 
 # dando permisos al directorio de dkim
-RUN chown -R opendkim:mail /etc/opendkim/keys/
+RUN chown -R opendkim:opendkim /etc/opendkim/keys/ && chmod -R 0750 /etc/opendkim/keys/ && chmod 0400 /etc/opendkim/keys/mycubantrip.com/*
 
 # creando el directorio
-RUN mkdir /run/opendkim && chown -R opendkim:mail /run/opendkim/
+RUN mkdir /run/opendkim && chown -R opendkim:opendkim /run/opendkim/
 
 # asignando un usuario postfix y adicionandole al grupo opendkim
 #RUN adduser -H -D -s /sbin/nologin postfix && addgroup postfix opendkim
 
 # Define mountable directories.
-# VOLUME ["/etc/opendkim"]
+VOLUME ["/var/log"]
 # Expose ports.
 EXPOSE 8891
 
