@@ -1,5 +1,5 @@
 FROM alpine:latest
-RUN apk --no-cache add bash opendkim opendkim-utils busybox-extras && rm -rf /var/cache/apk/*
+RUN apk --no-cache add bash opendkim opendkim-utils busybox-extras rsyslog supervisor && rm -rf /var/cache/apk/*
 
 # Add configs
 ADD ./etc/ /etc/
@@ -15,9 +15,15 @@ RUN mkdir /run/opendkim && chown -R opendkim:mail /run/opendkim/
 
 # Define mountable directories.
 # VOLUME ["/etc/opendkim"]
-
-# Define default command.
- CMD ["sh","-c", "/usr/sbin/opendkim -f -x /etc/opendkim/opendkim.conf"]
-
 # Expose ports.
 EXPOSE 8891
+
+# levantando el supervisor
+RUN mkdir -p /var/log/supervisor
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+CMD ["sh","-c","/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]
+
+# Define default command.
+ #CMD ["sh","-c", "/usr/sbin/opendkim -f -x /etc/opendkim/opendkim.conf"]
+
+
