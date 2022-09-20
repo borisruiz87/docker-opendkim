@@ -24,6 +24,6 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 CMD ["sh","-c","/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]
 
 # Define default command.
- #CMD ["sh","-c", "/usr/sbin/opendkim -f -x /etc/opendkim/opendkim.conf"]
+ #CMD ["sh","-c", "/usr/sbin/opendkim -f -x /etc/opendkim/opendkim.conf"] ESTO ES NUEVO
 
 
