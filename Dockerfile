@@ -5,7 +5,7 @@ RUN apk --no-cache add bash opendkim opendkim-utils busybox-extras rsyslog super
 ADD ./etc/ /etc/
 
 # dando permisos al directorio de dkim
-RUN chown -R opendkim:opendkim /etc/opendkim/keys/ && chmod -R 0750 /etc/opendkim/keys/ && chmod 0400 /etc/opendkim/keys/mycubantrip.com/*
+RUN chown -R opendkim:opendkim /etc/opendkim/keys/ && chmod -R 0750 /etc/opendkim/keys/ && chmod 0400 /etc/opendkim/keys/othar.cu/*
 
 # creando el directorio
 RUN mkdir /run/opendkim && chown -R opendkim:opendkim /run/opendkim/
