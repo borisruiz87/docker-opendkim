@@ -5,7 +5,7 @@ RUN apk --no-cache add bash opendkim opendkim-utils busybox-extras rsyslog super
 ADD ./etc/ /etc/
 
 # dando permisos al directorio de dkim
-RUN chown -R opendkim:opendkim /etc/opendkim/keys/ && chmod -R 0750 /etc/opendkim/keys/ && chmod 0400 /etc/opendkim/keys/othar.cu/*
+RUN chown -R opendkim:opendkim /etc/opendkim/keys/ && chmod -R 0750 /etc/opendkim/keys/ && chmod 0400 /etc/opendkim/keys/othar.cu/* && chmod 0400 /etc/opendkim/keys/fuegoenterprises.cu/*
 
 # creando el directorio
 RUN mkdir /run/opendkim && chown -R opendkim:opendkim /run/opendkim/
@@ -22,8 +22,3 @@ EXPOSE 8891
 RUN mkdir -p /var/log/supervisor
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 CMD ["sh","-c","/usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf"]
-
-# Define default command.
- #CMD ["sh","-c", "/usr/sbin/opendkim -f -x /etc/opendkim/opendkim.conf"]
-
-
